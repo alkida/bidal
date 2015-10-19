@@ -1,0 +1,29 @@
+spline_ecdf
+6
+COLUMN
+NPOINTS
+SHOW_ALL(T/F)
+MIN
+MAX
+DIVS
+require(rms)
+s=seq(min(t[[$PAR1$]]),max(t[[$PAR1$]]),by=(max(t[[$PAR1$]])-min(t[[$PAR1$]]))/$PAR6$)
+t3=as.data.frame(cbind(s,ecdf(t[[$PAR1$]])(s)))
+start=t3[2,1]
+end=head(tail(t3,2),1)[1,1]
+np=$PAR2$
+a=sapply(seq(log(start),log(end),(log(end)-log(start))/np),function(x){ exp(x) })
+f<-ols(t3[[2]] ~ lsp(t3[[1]], a))
+f2=Function(f)
+png(filename="temp.png");
+if( $PAR3$ ){
+  t4=t3
+}else{
+  MIN=0
+  MAX=0
+  t4=t3[t3[[1]]<$PAR5$ & t3[[1]]>$PAR4$,]
+}
+plot(t4)
+lines(t4[[1]],f2(t4))
+dev.off();
+

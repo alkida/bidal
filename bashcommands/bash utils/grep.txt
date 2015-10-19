@@ -1,0 +1,6 @@
+grep
+1
+PATTERN
+cat t.csv | grep "$PAR1$" > t2.csv
+mv t2.csv t.csv
+

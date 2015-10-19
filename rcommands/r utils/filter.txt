@@ -1,0 +1,5 @@
+filter
+1
+condition
+t=as.data.frame(t[$PAR1$,])
+

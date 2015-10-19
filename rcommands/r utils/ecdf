@@ -1,0 +1,6 @@
+ecdf
+1
+COLUMN
+png(filename="temp.png");
+plot(ecdf(t[[$PAR1$]]));
+dev.off();

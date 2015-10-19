@@ -1,0 +1,8 @@
+spline function export normalized
+1
+FILENAME
+require(pracma)
+a=capture.output(f2)	
+write(gsub("}",paste("\t) / ",quad(f2,t3[1,1],tail(t3,1)[1,1]),";\n}"),gsub("<[^>]*>","",gsub("t3","x",gsub("pmax","max",gsub(") }","); }",gsub("t3 <- t3[^\n]*","return (",gsub("function","float f",gsub(c("t3 = NA"),c("float x"),a)))))))),file="$PAR1$")
+write(paste("//Min: ",t3[1,1]," Max: ",tail(t3,1)[1,1],"\n"),file="$PAR1$",append=T)
+

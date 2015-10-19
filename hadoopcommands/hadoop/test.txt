@@ -1,0 +1,22 @@
+test
+0
+
+map <- function(k,v) {
+  return( keyval(v[1], 1) )
+}
+reduce <- function(key, vals) {
+  keyval(key, sum(vals))
+}
+mapredfun <- function (input, output=NULL) {
+  mapreduce(input=input, output=output, input.format=make.input.format(format ="csv",sep=","), map=map, reduce=reduce)
+}
+
+hdfs.root <- 'input'
+hdfs.rootout <- 'output'
+hdfs.data <- file.path(hdfs.root, source)
+hdfs.out <- file.path(hdfs.rootout, 't')
+out <- mapredfun(hdfs.data, hdfs.out)
+results <- from.dfs(out)
+results.df <- as.data.frame(results, stringsAsFactors=F)
+colnames(results.df) <- c('V1', 'V2')
+write.table(results.df,"/tmp/temp.csv",sep=',', col.names=FALSE,row.names=F)

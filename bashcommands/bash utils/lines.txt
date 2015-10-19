@@ -1,0 +1,5 @@
+nr lines
+0
+cat t.csv | wc -l > t2.csv
+mv t2.csv t.csv
+

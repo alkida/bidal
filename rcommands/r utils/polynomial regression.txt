@@ -1,0 +1,12 @@
+polynomial regression
+2
+GRADE
+COL
+t2=as.data.frame(table(as.data.frame(t[[$PAR2$]])))
+fit=lm(as.numeric(t2[[2]]) ~ poly(as.numeric(t2[[1]]),$PAR1$,raw=TRUE))
+t3=cbind(t2[[1]],t2[[2]])
+t4=cbind(t2[[1]],predict(fit,data.frame(x=t2[[1]])))
+png(filename="temp.png");
+plot(t3)
+lines(t4)
+dev.off();

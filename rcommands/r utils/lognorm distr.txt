@@ -1,0 +1,7 @@
+lognormal_distribution
+0
+require(fitdistrplus)
+f6 <- fitdist(t[[1]],"lnorm")
+png(filename="temp.png");
+plotdist(t[[1]],"lnorm",para=list(meanlog=f6$estimate[1],sdlog=f6$estimate[2]))
+dev.off();

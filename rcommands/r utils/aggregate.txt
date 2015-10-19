@@ -1,0 +1,8 @@
+aggregate
+3
+COL_GROUP
+CONDITION(curr,succ)
+RESULT(curr,succ)
+library(plyr)
+aggr3=function(t,col,comp,ret){ ddply(t,.(t[[2]]),function(x){ a=NULL; for( i in 1:length(x[[1]]) )if( i<length(x[[1]]) )if( comp(x[i,], x[i+1,]) )rbind(a, ret(x[i,],x[i+1,1]) )->a ; a  }) }
+t=as.data.frame(aggr3(t,$PAR1$,function(curr,succ){$PAR2$},function(curr,succ){ $PAR3$ })[[2]])

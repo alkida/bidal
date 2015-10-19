@@ -1,0 +1,7 @@
+exponential_distribution
+0
+require(fitdistrplus)
+png(filename="temp.png");
+f7 <- fitdist(t[[1]],"exp")
+plotdist(t[[1]],"exp",para=list(rate=f7$estimate[1]))
+dev.off();

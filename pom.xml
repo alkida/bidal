@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>it.unibo.bidal</groupId>
+  <artifactId>DataAnalyzer</artifactId>
+  <packaging>jar</packaging>
+  <name>DataAnalyzer</name>
+  <dependencies>
+      <dependency>
+        <groupId>com.akiban</groupId>
+        <artifactId>akiban-sql-parser</artifactId>
+        <version>1.0.16</version>
+      </dependency>
+  </dependencies>
+  <version>0.0.1</version>
+  <build>
+   <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>analyzer.Controller</mainClass>
+          </manifest>
+       </archive>
+      </configuration>
+    </plugin>
+   </plugins>
+  </build>
+</project>

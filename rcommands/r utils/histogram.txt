@@ -1,0 +1,6 @@
+histogram
+1
+COLUMN
+png(filename="temp.png");
+hist(t[[$PAR1$]]);
+dev.off();

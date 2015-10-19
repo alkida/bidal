@@ -1,0 +1,4 @@
+apply_1Col
+1
+FUNCTION(x)
+t=as.data.frame(apply(t,1,function(x){$PAR1$}))

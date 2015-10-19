@@ -1,0 +1,5 @@
+get column
+1
+column number
+t=as.data.frame(t[[$PAR1$]])
+

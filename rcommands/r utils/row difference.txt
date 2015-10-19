@@ -1,0 +1,4 @@
+difference between rows
+0
+t=as.data.frame(apply(t,2,diff))
+

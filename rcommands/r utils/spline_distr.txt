@@ -1,0 +1,28 @@
+spline
+5
+COLUMN
+NPOINTS
+SHOW_ALL(T/F)
+MIN
+MAX
+require(rms)
+t2=as.data.frame(table(t[[$PAR1$]]))
+t3=as.data.frame(cbind(as.numeric(as.character(t2[[1]])),as.numeric(as.character(t2[[2]]))))
+start=t3[2,1]
+end=head(tail(t3,2),1)[1,1]
+np=$PAR2$
+a=sapply(seq(log(start),log(end),(log(end)-log(start))/np),function(x){ exp(x) })
+f<-ols(t3[[2]] ~ lsp(t3[[1]], a))
+f2=Function(f)
+png(filename="temp.png");
+if( $PAR3$ ){
+  t4=t3
+}else{
+  MIN=0
+  MAX=0
+  t4=t3[t3[[1]]<$PAR5$ & t3[[1]]>$PAR4$,]
+}
+plot(t4)
+lines(t4[[1]],f2(t4))
+dev.off();
+

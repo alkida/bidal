@@ -1,0 +1,7 @@
+weibull_distribution
+0
+require(fitdistrplus)
+png(filename="temp.png");
+f9 <- fitdist(t[[1]],"weibull")
+plotdist(t[[1]],"weibull",para=list(shape=f9$estimate[1],scale=f9$estimate[2]))
+dev.off();
