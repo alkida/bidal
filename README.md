@@ -1,16 +1,16 @@
 # bidal
-BiDAl big data analyzer
+<h5>BiDAl big data analyzer</h5>
 
 
-How to compile:__
+How to compile:<br />
 mvn compile
 
-How to create JAR:__
+How to create JAR:<br />
 mvn package
 
-How to run:__
+How to run:<br />
 mvn exec:java -Dexec.mainClass="analyzer.Controller"
 
-It has been tested on Linux and MacOS.__
-It is necessary to have R, RSQLite package, hadoop and an environment variable set as__
+It has been tested on Linux and MacOS.<br />
+It is necessary to have R, RSQLite package, hadoop and an environment variable set as<br />
 export HADOOP_HOME=/path/to/hadoop/
