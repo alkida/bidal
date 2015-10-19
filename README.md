@@ -1,5 +1,5 @@
-# bidal
-<h5>BiDAl big data analyzer</h5>
+# BiDAl
+<h5>Big Data Analyzer</h5>
 
 
 How to compile:<br />
