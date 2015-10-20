@@ -50,13 +50,17 @@ public class HadoopVisitor implements Visitor {
 	 * @return the generated command
 	 */
 	public String getGeneratedCommand(){
-		if( groupby == null )return "";
-		
+		if(groupby == null )return "";
+		if(select != null )System.out.println("SELECT "+ select);
+		if(from != null )System.out.println("FROM " + from);
+		if(where != null )System.out.println("WHERE " + where);
+		if(groupby != null )System.out.println("GROUPBY "+ groupby );
+		if(where == null )where = "TRUE";
 		String ret = 
 				"COUNT=function(x){return (dim(x));}; AVG=function(x){return (mean(x));}; MIN=function(x){return (min(x));}; MAX=function(x){return (max(x));};\n" +
 				"map <- function(k,v){\n" +
-				"  key = v["+ groupby +"];\n" +
-				"  val = v["+ select.substring(select.indexOf('(')+2, select.indexOf(')')) +"];\n" +
+				"  key = v["+ where +",]["+ groupby +"];\n" +
+				"  val = v["+ where +",]"+ select.substring(select.indexOf('(')+2, select.indexOf(')')) +";\n" +
 				"  return (keyval(key,val));\n" +
 				"}\n" +
 				"reduce <- function(key,vals){\n" +
@@ -180,7 +184,7 @@ public class HadoopVisitor implements Visitor {
 
 		public Visitable visit(Visitable v) throws StandardException {
 			if( skiproot && !skippedroot1 ){ skippedroot1 = true; return null; }
-			if( v instanceof ColumnReference )result += ((ColumnReference)v).getColumnName();
+			if( v instanceof ColumnReference )result += "v["+((ColumnReference)v).getColumnName().substring(1)+"]";
 			else if( v instanceof AggregateNode ){
 				AggregateNode an = (AggregateNode)v;
 				result += an.getAggregateName() + "(";
